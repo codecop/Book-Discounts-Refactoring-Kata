@@ -1,12 +1,9 @@
 package experiment_with_deep_hierarchy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class AbstractItem implements CartAble {
 
     protected String name;
-    protected List<String> delivery = new ArrayList<>();
+    private boolean readyToShip;
     protected int deliveryCost;
 
     public AbstractItem(String name) {
@@ -14,12 +11,17 @@ public abstract class AbstractItem implements CartAble {
     }
 
     public void updateDelivery(Cart cart) {
+        // template method
         putIntoMyCart(cart);
+
         int gramms = getWeightInGramms(); // by each item
         calculateDeliveryCost(cart, gramms); // default can be overwritten
-        privateFoo();
+        calculationComplete();
     }
 
+    /**
+     * Every item needs to provide its weight."
+     */
     protected abstract int getWeightInGramms();
 
     protected void calculateDeliveryCost(Cart cart, int gramms) {
@@ -30,8 +32,8 @@ public abstract class AbstractItem implements CartAble {
         }
     }
 
-    private void privateFoo() {
-
+    private void calculationComplete() {
+        readyToShip = true;
     }
 
     public int getDeliveryCost() {

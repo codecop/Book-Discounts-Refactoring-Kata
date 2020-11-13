@@ -5,8 +5,13 @@ package experiment_with_deep_hierarchy;
  */
 public class Cart {
 
-    public void add(Book basicItem) {
+    public void add(CartAble cartAble) {
 
+    }
+
+    public boolean containsTwice(String name) {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }

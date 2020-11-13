@@ -8,29 +8,27 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     public void updateDelivery(Cart cart) {
-        if (false) {
-            super.updateDelivery(cart);
-        } else {
-            putIntoMyCart(cart);
-            bar2();
-            abstractBar();
-            privateBar();
+        super.updateDelivery(cart);
+        handleGiftOptions(cart);
+    }
+
+    @Override
+    protected void calculateDeliveryCost(Cart cart, int gramms) {
+        if (isHalfPrice()) {
+            gramms /= 2;
+        }
+        super.calculateDeliveryCost(cart, gramms);
+        buyTwoOnlyPayShippingForOne(cart);
+    }
+
+    protected abstract boolean isHalfPrice();
+
+    private void buyTwoOnlyPayShippingForOne(Cart cart) {
+        if (cart.containsTwice(name)) {
+            deliveryCost /= 2;
         }
     }
 
-    protected abstract void abstractBar();
-
-    protected void bar2() {
-
-    }
-
-    protected void calculateDeliveryCost(Cart cart) {
-        privateBar();
-        super.calculateDeliveryCost(cart, 0);
-    }
-
-    private void privateBar() {
-
-    }
+    protected abstract void handleGiftOptions(Cart cart);
 
 }

@@ -1,7 +1,5 @@
 package experiment_with_deep_hierarchy;
 
-import java.util.Arrays;
-
 public class Main {
 
     public static void main(String[] args) {

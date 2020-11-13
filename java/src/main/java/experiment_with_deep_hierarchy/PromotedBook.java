@@ -8,24 +8,49 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     public void putIntoMyCart(Cart cart) {
+        cart.add(this);
     }
 
     @Override
-    protected void abstractBar() {
+    protected void handleGiftOptions(Cart cart) {
+        cart.add(giftWrappingFor(this));
+    }
+
+    private CartAble giftWrappingFor(PromotedBook promotedBook) {
+        return new GiftWrapping(promotedBook);
+    }
+
+    @Override
+    protected boolean isHalfPrice() {
+        return false;
+        // TODO logic
     }
 
     @Override
     protected int getWeightInGramms() {
         return 0;
+        // TODO logic
+    }
+
+    private static class GiftWrapping implements CartAble {
+
+        public GiftWrapping(PromotedBook promotedBook) {
+        }
+
+        @Override
+        public void putIntoMyCart(Cart cart) {
+
+        }
+
     }
 
 }
 /*
- * Interface
+ * Interface = CartAble
  * |
- * Abstract1
- * |          \
- * Abstract2   Real1
+ * Abstract1 =  AbstractItem
+ * |                        \
+ * Abstract2 = OnOffer        Real1 = Book
  * |
- * Real2
+ * Real2 = PromotedBook
  */

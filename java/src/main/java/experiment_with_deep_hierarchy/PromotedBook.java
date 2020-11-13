@@ -1,8 +1,8 @@
 package experiment_with_deep_hierarchy;
 
-public class PromotedItem extends AbstractItemOnOffer {
+public class PromotedBook extends AbstractItemOnOffer {
 
-    public PromotedItem(String name) {
+    public PromotedBook(String name) {
         super(name);
     }
 

@@ -3,9 +3,9 @@ package experiment_with_deep_hierarchy;
 /**
  * Basic items < 1kg
  */
-public class BasicItem extends AbstractItem {
+public class Book extends AbstractItem {
 
-    public BasicItem(String name) {
+    public Book(String name) {
         super(name);
     }
 

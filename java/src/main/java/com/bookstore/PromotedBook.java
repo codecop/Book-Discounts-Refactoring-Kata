@@ -3,7 +3,7 @@ package com.bookstore;
 /**
  * Concrete books on promotion have several goodies: <br>
  * - You get a discount on next purchase.<br>
- * - You get a discount on shipping if it is heavy.<br>
+ * - You get a discount on delivery if it is heavy.<br>
  * - You get a gift wrapping for free.<br>
  */
 public class PromotedBook extends AbstractItemOnOffer {
@@ -30,7 +30,7 @@ public class PromotedBook extends AbstractItemOnOffer {
     }
 
     @Override
-    protected boolean hasDiscountOnShipping() {
+    protected boolean hasDiscountOnDelivery() {
         return itemWeight() > 500;
     }
 

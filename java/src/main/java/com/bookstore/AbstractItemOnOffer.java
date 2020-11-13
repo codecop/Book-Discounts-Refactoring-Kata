@@ -1,12 +1,11 @@
 package com.bookstore;
 
 /**
- * : <br>
- * - Allows for discount on shipping.<br>
- * - Allows gift options.<br>
- * - Reduces the cost of shipping if you are buying two or more.<br>
+ * Some items (i.e. books) can be on offer. Items on offer<br>
+ * - Allow for a discount on delivery cost.<br>
+ * - Allow for gift options.<br>
+ * - Reduce the cost of delivery if you are buying two or more of the same kind.<br>
  */
-
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
     public AbstractItemOnOffer(String name) {
@@ -21,20 +20,22 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     protected void calculateDeliveryCost(Cart cart, int gramms) {
-        if (hasDiscountOnShipping()) {
-            gramms /= 2;
+        int reduceCost = 1;
+        if (hasDiscountOnDelivery()) {
+            reduceCost = 2;
         }
 
-        super.calculateDeliveryCost(cart, gramms);
+        super.calculateDeliveryCost(cart, gramms / reduceCost);
 
-        buyTwoOnlyPayShippingForOne(cart);
+        buyTwoOnlyPayDeliveryForOne(cart);
     }
 
-    protected boolean hasDiscountOnShipping() {
+    protected boolean hasDiscountOnDelivery() {
+        // default no discount on delivery
         return false;
     }
 
-    private void buyTwoOnlyPayShippingForOne(Cart cart) {
+    private void buyTwoOnlyPayDeliveryForOne(Cart cart) {
         if (cart.containsTwiceOrMore(getName())) {
             deliveryCost /= 2;
         }

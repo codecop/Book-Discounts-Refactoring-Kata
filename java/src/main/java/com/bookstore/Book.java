@@ -1,7 +1,7 @@
 package com.bookstore;
 
 /**
- * Most used item, a regular book. A book has a weight which cause shipping costs.
+ * Most used item, a regular book. A book has a weight which cause delivery costs.
  */
 public class Book extends AbstractItem {
 

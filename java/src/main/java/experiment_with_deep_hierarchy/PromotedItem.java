@@ -2,8 +2,11 @@ package experiment_with_deep_hierarchy;
 
 public class PromotedItem extends AbstractItemOnOffer {
 
+    public PromotedItem(String name) {
+    }
+
     @Override
-    public void putIntoMyCart() {
+    public void putIntoMyCart(Cart cart) {
     }
 
     @Override

@@ -1,11 +1,13 @@
 package experiment_with_deep_hierarchy;
 
+import java.util.List;
+
 public abstract class AbstractItem implements CartAble {
 
     protected String bar;
 
-    public void templateMethod() {
-        putIntoMyCart();
+    public void updateDelivery(Cart cart) {
+        putIntoMyCart(cart);
         abstractFoo();
         privateFoo();
     }
@@ -18,6 +20,10 @@ public abstract class AbstractItem implements CartAble {
 
     private void privateFoo() {
 
+    }
+
+    public List<String> getDelivery() {
+        return null;
     }
 
 }

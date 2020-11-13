@@ -3,11 +3,11 @@ package experiment_with_deep_hierarchy;
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
-    public void templateMethod() {
+    public void updateDelivery(Cart cart) {
         if (false) {
-            super.templateMethod();
+            super.updateDelivery(cart);
         } else {
-            putIntoMyCart();
+            putIntoMyCart(cart);
             bar2();
             abstractBar();
             privateBar();

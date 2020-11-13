@@ -1,4 +1,4 @@
-package experiment_with_deep_hierarchy;
+package com.bookstore;
 
 public class GiftWrapping implements CartAble {
 

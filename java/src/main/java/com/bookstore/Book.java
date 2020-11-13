@@ -1,4 +1,4 @@
-package experiment_with_deep_hierarchy;
+package com.bookstore;
 
 /**
  * Basic items < 1kg

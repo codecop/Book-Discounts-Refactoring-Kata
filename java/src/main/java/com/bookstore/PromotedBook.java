@@ -1,4 +1,4 @@
-package experiment_with_deep_hierarchy;
+package com.bookstore;
 
 /**
  * Concrete books on promotion have several goodies: <br>

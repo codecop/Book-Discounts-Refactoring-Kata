@@ -6,6 +6,9 @@ or gifts - to orders of books.
 
 ## Your Task
 
+This exercise is hard. It includes several classes which form a coupled hierarchy.
+Maybe start exploring a simpler code base first, which only has one level of hierarchy.
+
 tbd
 
 ## Motivation

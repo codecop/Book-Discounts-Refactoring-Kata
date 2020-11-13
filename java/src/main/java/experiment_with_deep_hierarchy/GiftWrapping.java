@@ -1,13 +1,16 @@
 package experiment_with_deep_hierarchy;
 
-class GiftWrapping implements CartAble {
+public class GiftWrapping implements CartAble {
 
-    public GiftWrapping(PromotedBook promotedBook) {
+    private final AbstractItem item;
+
+    public GiftWrapping(AbstractItem item) {
+        this.item = item;
     }
 
     @Override
     public void putIntoMyCart(Cart cart) {
-
+        cart.add(this);
     }
 
 }

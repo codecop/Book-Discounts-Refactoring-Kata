@@ -1,5 +1,11 @@
 package experiment_with_deep_hierarchy;
 
+/**
+ * Concrete books on promotion have several goodies: <br>
+ * - You get a discount on next purchase.<br>
+ * - You get a discount on shipping if it is heavy.<br>
+ * - You get a gift wrapping for free.<br>
+ */
 public class PromotedBook extends AbstractItemOnOffer {
 
     private static final int DEFAULT_WEIGHT_BOOK = 999; // below 1kg
@@ -11,7 +17,7 @@ public class PromotedBook extends AbstractItemOnOffer {
     @Override
     public void putIntoMyCart(Cart cart) {
         cart.add(this);
-        cart.add(new DiscountOfNextPurchase(0.1));
+        cart.add(new DiscountOnNextPurchase(0.1));
     }
 
     @Override
@@ -30,7 +36,7 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     protected void handleGiftOptions(Cart cart) {
-        cart.add(new GiftWrapping(this));
+        new GiftWrapping(this).putIntoMyCart(cart);
     }
 
 }

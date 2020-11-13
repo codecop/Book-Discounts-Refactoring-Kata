@@ -1,8 +1,8 @@
 package experiment_with_deep_hierarchy;
 
-public class DiscountOfNextPurchase implements CartAble {
+public class DiscountOnNextPurchase implements CartAble {
 
-    public DiscountOfNextPurchase(double percentage) {
+    public DiscountOnNextPurchase(double percentage) {
     }
 
     @Override

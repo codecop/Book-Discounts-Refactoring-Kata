@@ -1,5 +1,12 @@
 package experiment_with_deep_hierarchy;
 
+/**
+ * : <br>
+ * - Allows for discount on shipping.<br>
+ * - Allows gift options.<br>
+ * - Reduces the cost of shipping if you are buying two or more.<br>
+ */
+
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
     public AbstractItemOnOffer(String name) {

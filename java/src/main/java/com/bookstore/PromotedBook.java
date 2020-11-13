@@ -36,7 +36,7 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     protected boolean hasDiscountOnDelivery() {
-        return itemWeight() > DEFAULT_WEIGHT_BOOK_GRAMMS;
+        return itemWeight() >= DEFAULT_WEIGHT_BOOK_GRAMMS;
     }
 
     @Override
@@ -45,12 +45,3 @@ public class PromotedBook extends AbstractItemOnOffer {
     }
 
 }
-/*
- * Interface = CartAble
- * |
- * Abstract1 =  AbstractItem
- * |                        \
- * Abstract2 = OnOffer        Real1 = Book
- * |
- * Real2 = PromotedBook
- */

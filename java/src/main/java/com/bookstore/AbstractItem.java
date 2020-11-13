@@ -35,7 +35,7 @@ public abstract class AbstractItem implements CartAble {
     protected abstract int itemWeight();
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
-        if (gramms < 1000) {
+        if (gramms <= 500) {
             deliveryCost = 10;
         } else {
             deliveryCost = (int) Math.sqrt(gramms);

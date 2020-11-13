@@ -16,13 +16,13 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(this);
-        cart.add(new DiscountOnNextPurchase(0.1));
+        cart.add(getName());
+        new DiscountVoucher(10).putIntoMyCart(cart);
     }
 
     @Override
-    protected int getWeightInGramms() {
-        if (name.equals("Book")) {
+    protected int itemWeight() {
+        if (getName().equals("Book")) {
             return 250;
         }
 
@@ -31,7 +31,7 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     protected boolean hasDiscountOnShipping() {
-        return getWeightInGramms() > 500;
+        return itemWeight() > 500;
     }
 
     @Override

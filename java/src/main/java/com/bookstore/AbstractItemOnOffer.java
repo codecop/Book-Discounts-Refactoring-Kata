@@ -14,8 +14,8 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
     }
 
     @Override
-    public void calculateDeliveryCost(Cart cart) {
-        super.calculateDeliveryCost(cart);
+    public void prepareDeliveryIn(Cart cart) {
+        super.prepareDeliveryIn(cart);
         handleGiftOptions(cart);
     }
 
@@ -35,7 +35,7 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
     }
 
     private void buyTwoOnlyPayShippingForOne(Cart cart) {
-        if (cart.containsTwice(name)) {
+        if (cart.containsTwiceOrMore(getName())) {
             deliveryCost /= 2;
         }
     }

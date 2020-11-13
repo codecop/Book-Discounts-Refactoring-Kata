@@ -1,33 +1,38 @@
 package com.bookstore;
 
+/**
+ * Base class of all our physical items. Most items are books but we also offer other things like gift cards.
+ */
 public abstract class AbstractItem implements CartAble {
 
-    private static final int NOT_READY_TO_SHIP = -1;
+    private static final int NOT_READY_TO_DELIVER = -1;
 
-    protected final String name;
-    private boolean readyToShip;
-
+    private final String name;
     protected int deliveryCost;
+    private boolean readyToDeliver;
 
     public AbstractItem(String name) {
         this.name = name;
     }
 
-    // template method
-    public void calculateDeliveryCost(Cart cart) {
-        if (!cart.contains(this)) {
-            throw new IllegalStateException("Can only calculate costs for items in cart");
+    public String getName() {
+        return name;
+    }
+
+    public void prepareDeliveryIn(Cart cart) {
+        if (!cart.contains(this.name)) {
+            throw new IllegalStateException("Can only calculate delivery costs for items in cart");
         }
 
-        int gramms = getWeightInGramms(); // by each item
-        calculateDeliveryCost(cart, gramms); // default can be overwritten
-        calculationComplete();
+        int gramms = itemWeight();
+        calculateDeliveryCost(cart, gramms);
+        markReadyToDeliver();
     }
 
     /**
-     * Every item needs to provide its weight."
+     * Every item needs to provide its weight.
      */
-    protected abstract int getWeightInGramms();
+    protected abstract int itemWeight();
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
         if (gramms < 1000) {
@@ -37,15 +42,19 @@ public abstract class AbstractItem implements CartAble {
         }
     }
 
-    protected void calculationComplete() {
-        readyToShip = true;
+    protected final void markReadyToDeliver() {
+        readyToDeliver = true;
     }
 
-    public int getDeliveryCost() {
-        if (readyToShip) {
+    public final int getDeliveryCost() {
+        if (readyToDeliver) {
             return deliveryCost;
         }
-        return NOT_READY_TO_SHIP;
+        return NOT_READY_TO_DELIVER;
     }
 
+    @Override
+    public String toString() {
+        return name + " (" + getDeliveryCost() + "EUR)";
+    }
 }

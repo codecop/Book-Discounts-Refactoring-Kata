@@ -1,8 +1,8 @@
 ﻿# Book Discounts Refactoring Kata
 
 This code is part of the software system of our book store. The current code
-deals with adding different goodies - e.g. discounts, promotions or gifts - to 
-orders of books.
+deals with adding different goodies when delivering - e.g. discounts, promotions 
+or gifts - to orders of books.
 
 ## Your Task
 

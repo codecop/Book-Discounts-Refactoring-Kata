@@ -1,16 +1,28 @@
 package com.bookstore;
 
-public class GiftWrapping implements CartAble {
-
-    private final AbstractItem item;
+/**
+ * We provide gift wrappings for our books.
+ */
+public class GiftWrapping extends AbstractItem {
 
     public GiftWrapping(AbstractItem item) {
-        this.item = item;
+        super("Gift wrapping for " + item.getName());
     }
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(this);
+        cart.add(getName());
+    }
+
+    @Override
+    protected void calculateDeliveryCost(Cart cart, int gramms) {
+        // no delivery cost
+        markReadyToDeliver();
+    }
+
+    @Override
+    protected int itemWeight() {
+        return 5;
     }
 
 }

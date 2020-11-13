@@ -1,11 +1,11 @@
 package com.bookstore;
 
 /**
- * Basic items < 1kg
+ * Most used item, a regular book. A book has a weight which cause shipping costs.
  */
 public class Book extends AbstractItem {
 
-    private static final int DEFAULT_WEIGHT_BOOK = 999; // below 1kg
+    private static final int DEFAULT_WEIGHT_BOOK_GRAMMS = 500;
 
     public Book(String name) {
         super(name);
@@ -13,16 +13,21 @@ public class Book extends AbstractItem {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(this);
+        cart.add(getName());
     }
 
     @Override
-    protected int getWeightInGramms() {
-        if (name.equals("Book")) {
-            return 250;
+    protected int itemWeight() {
+        if (getName().contains("C++")) {
+            // C++ books are usually heavy
+            return 750; // gramm
+
+        } else if (getName().contains("Good Parts")) {
+            // Good Parts are only few, so thin books
+            return 100; // gramm
         }
 
-        return DEFAULT_WEIGHT_BOOK;
+        return DEFAULT_WEIGHT_BOOK_GRAMMS;
     }
 
 }

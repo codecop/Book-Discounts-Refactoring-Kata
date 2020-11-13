@@ -4,10 +4,25 @@ This code is part of the software system of our book store. The current code
 deals with adding different goodies when delivering - e.g. discounts, promotions 
 or gifts - to orders of books.
 
-## Your Task
+The current hierarchy of classes is
+ 
+             CartAble
+                |
+                |
+           AbstractItem      
+          /             \
+         /               \
+    AbstractItemOnOffer   Book
+               |
+               |
+          PromotedBook
+
 
 This exercise is hard. It includes several classes which form a coupled hierarchy.
 Maybe start exploring a simpler code base first, which only has one level of hierarchy.
+
+## Your Task
+
 
 tbd
 

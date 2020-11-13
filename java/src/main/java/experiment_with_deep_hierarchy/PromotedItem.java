@@ -3,6 +3,7 @@ package experiment_with_deep_hierarchy;
 public class PromotedItem extends AbstractItemOnOffer {
 
     public PromotedItem(String name) {
+        super(name);
     }
 
     @Override
@@ -14,7 +15,8 @@ public class PromotedItem extends AbstractItemOnOffer {
     }
 
     @Override
-    protected void abstractFoo() {
+    protected int getWeightInGramms() {
+        return 0;
     }
 
 }

@@ -14,6 +14,6 @@ public class Main {
 
         promotedItem.updateDelivery(cart);
 
-        assert promotedItem.getDelivery().equals(Arrays.asList("US", "CA"));
+        assert promotedItem.getDeliveryCost() == 10;
     }
 }

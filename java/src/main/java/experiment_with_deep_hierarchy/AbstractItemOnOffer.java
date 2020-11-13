@@ -2,6 +2,10 @@ package experiment_with_deep_hierarchy;
 
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
+    public AbstractItemOnOffer(String name) {
+        super(name);
+    }
+
     @Override
     public void updateDelivery(Cart cart) {
         if (false) {
@@ -20,9 +24,9 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     }
 
-    protected void foo2() {
+    protected void calculateDeliveryCost(Cart cart) {
         privateBar();
-        super.foo2();
+        super.calculateDeliveryCost(cart, 0);
     }
 
     private void privateBar() {

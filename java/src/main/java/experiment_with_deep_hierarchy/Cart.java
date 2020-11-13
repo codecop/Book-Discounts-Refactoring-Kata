@@ -5,4 +5,8 @@ package experiment_with_deep_hierarchy;
  */
 public class Cart {
 
+    public void add(BasicItem basicItem) {
+
+    }
+
 }

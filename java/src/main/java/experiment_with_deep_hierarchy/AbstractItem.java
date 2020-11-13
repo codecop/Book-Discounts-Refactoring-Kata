@@ -1,11 +1,11 @@
 package experiment_with_deep_hierarchy;
 
-public abstract class BaseClass implements IInterface {
+public abstract class AbstractItem implements CartAble {
 
     protected String bar;
 
     public void templateMethod() {
-        iFoo();
+        putIntoMyCart();
         abstractFoo();
         privateFoo();
     }

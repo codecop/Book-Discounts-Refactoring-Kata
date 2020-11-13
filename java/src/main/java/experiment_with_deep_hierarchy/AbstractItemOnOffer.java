@@ -1,13 +1,13 @@
 package experiment_with_deep_hierarchy;
 
-public abstract class SpecificAbstract extends BaseClass {
+public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     public void templateMethod() {
         if (false) {
             super.templateMethod();
         } else {
-            iFoo();
+            putIntoMyCart();
             bar2();
             abstractBar();
             privateBar();

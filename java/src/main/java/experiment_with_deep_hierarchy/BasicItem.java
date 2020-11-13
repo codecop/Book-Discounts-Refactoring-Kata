@@ -1,9 +1,9 @@
 package experiment_with_deep_hierarchy;
 
-public class ShortReal extends BaseClass {
+public class BasicItem extends AbstractItem {
 
     @Override
-    public void iFoo() {
+    public void putIntoMyCart() {
 
     }
 

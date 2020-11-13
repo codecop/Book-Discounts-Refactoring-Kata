@@ -1,9 +1,9 @@
 package experiment_with_deep_hierarchy;
 
-public class RealClass extends SpecificAbstract {
+public class PromotedItem extends AbstractItemOnOffer {
 
     @Override
-    public void iFoo() {
+    public void putIntoMyCart() {
     }
 
     @Override

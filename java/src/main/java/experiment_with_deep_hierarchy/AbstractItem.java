@@ -2,17 +2,22 @@ package experiment_with_deep_hierarchy;
 
 public abstract class AbstractItem implements CartAble {
 
-    protected String name;
+    private static final int NOT_READY_TO_SHIP = -1;
+
+    protected final String name;
     private boolean readyToShip;
+
     protected int deliveryCost;
 
     public AbstractItem(String name) {
         this.name = name;
     }
 
-    public void updateDelivery(Cart cart) {
-        // template method
-        putIntoMyCart(cart);
+    // template method
+    public void calculateDeliveryCost(Cart cart) {
+        if (!cart.contains(this)) {
+            throw new IllegalStateException("Can only calculate costs for items in cart");
+        }
 
         int gramms = getWeightInGramms(); // by each item
         calculateDeliveryCost(cart, gramms); // default can be overwritten
@@ -24,7 +29,7 @@ public abstract class AbstractItem implements CartAble {
      */
     protected abstract int getWeightInGramms();
 
-    protected void calculateDeliveryCost(Cart cart, int gramms) {
+    protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
         if (gramms < 1000) {
             deliveryCost = 10;
         } else {
@@ -32,12 +37,15 @@ public abstract class AbstractItem implements CartAble {
         }
     }
 
-    private void calculationComplete() {
+    protected void calculationComplete() {
         readyToShip = true;
     }
 
     public int getDeliveryCost() {
-        return deliveryCost;
+        if (readyToShip) {
+            return deliveryCost;
+        }
+        return NOT_READY_TO_SHIP;
     }
 
 }

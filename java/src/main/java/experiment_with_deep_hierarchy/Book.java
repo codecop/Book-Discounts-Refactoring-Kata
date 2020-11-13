@@ -5,6 +5,8 @@ package experiment_with_deep_hierarchy;
  */
 public class Book extends AbstractItem {
 
+    private static final int DEFAULT_WEIGHT_BOOK = 999; // below 1kg
+
     public Book(String name) {
         super(name);
     }
@@ -18,9 +20,9 @@ public class Book extends AbstractItem {
     protected int getWeightInGramms() {
         if (name.equals("Book")) {
             return 250;
-
         }
-        return 999; // below 1kg
+
+        return DEFAULT_WEIGHT_BOOK;
     }
 
 }

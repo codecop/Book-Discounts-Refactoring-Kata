@@ -13,7 +13,7 @@ public class Main {
         // TODO when certain promotion is added, it reduced delivery cost of others in the cart
         // e.g. 3 for price of two
 
-        promotedItem.updateDelivery(cart);
+        promotedItem.calculateDeliveryCost(cart);
 
         assert promotedItem.getDeliveryCost() == 10;
     }

@@ -10,8 +10,11 @@ public class Cart {
     }
 
     public boolean containsTwice(String name) {
-        // TODO Auto-generated method stub
         return false;
+    }
+
+    public boolean contains(CartAble abstractItem) {
+        return true;
     }
 
 }

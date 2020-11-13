@@ -2,6 +2,8 @@ package experiment_with_deep_hierarchy;
 
 public class PromotedBook extends AbstractItemOnOffer {
 
+    private static final int DEFAULT_WEIGHT_BOOK = 999; // below 1kg
+
     public PromotedBook(String name) {
         super(name);
     }
@@ -9,39 +11,26 @@ public class PromotedBook extends AbstractItemOnOffer {
     @Override
     public void putIntoMyCart(Cart cart) {
         cart.add(this);
-    }
-
-    @Override
-    protected void handleGiftOptions(Cart cart) {
-        cart.add(giftWrappingFor(this));
-    }
-
-    private CartAble giftWrappingFor(PromotedBook promotedBook) {
-        return new GiftWrapping(promotedBook);
-    }
-
-    @Override
-    protected boolean isHalfPrice() {
-        return false;
-        // TODO logic
+        cart.add(new DiscountOfNextPurchase(0.1));
     }
 
     @Override
     protected int getWeightInGramms() {
-        return 0;
-        // TODO logic
+        if (name.equals("Book")) {
+            return 250;
+        }
+
+        return DEFAULT_WEIGHT_BOOK;
     }
 
-    private static class GiftWrapping implements CartAble {
+    @Override
+    protected boolean hasDiscountOnShipping() {
+        return getWeightInGramms() > 500;
+    }
 
-        public GiftWrapping(PromotedBook promotedBook) {
-        }
-
-        @Override
-        public void putIntoMyCart(Cart cart) {
-
-        }
-
+    @Override
+    protected void handleGiftOptions(Cart cart) {
+        cart.add(new GiftWrapping(this));
     }
 
 }

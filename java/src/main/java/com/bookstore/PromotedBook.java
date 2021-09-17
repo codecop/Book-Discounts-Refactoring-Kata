@@ -11,7 +11,7 @@ public class PromotedBook extends AbstractItemOnOffer {
     private static final int DEFAULT_WEIGHT_BOOK_GRAMMS = 500;
 
     public PromotedBook(String name) {
-        super(name, new PutPromoItemIntoCart());
+        super(name, new PutItemWithVoucherIntoCart());
     }
 
     @Override

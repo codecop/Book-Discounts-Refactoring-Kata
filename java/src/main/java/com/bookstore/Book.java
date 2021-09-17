@@ -6,6 +6,7 @@ package com.bookstore;
 public class Book extends AbstractItem {
 
     private static final int DEFAULT_WEIGHT_BOOK_GRAMMS = 500;
+    private final PutIntoCart putIntoCart = new PutItemIntoCart();
 
     public Book(String name) {
         super(name);
@@ -13,7 +14,7 @@ public class Book extends AbstractItem {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(getName());
+        putIntoCart.putIntoCart(cart, this);
     }
 
     @Override

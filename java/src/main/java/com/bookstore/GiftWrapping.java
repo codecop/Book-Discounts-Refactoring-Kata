@@ -8,10 +8,11 @@ public class GiftWrapping extends AbstractItem {
     public GiftWrapping(AbstractItem item) {
         super("Gift wrapping for " + item.getName());
     }
+    private final PutIntoCart putIntoCart = new PutItemIntoCart();
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(getName());
+        putIntoCart.putIntoCart(cart, this);
     }
 
     @Override

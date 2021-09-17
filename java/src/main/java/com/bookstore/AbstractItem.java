@@ -8,11 +8,17 @@ public abstract class AbstractItem implements CartAble {
     private static final int NOT_READY_TO_DELIVER = -1;
 
     private final String name;
+    private final PutIntoCart putIntoCart;
     protected int deliveryCost;
     private boolean readyToDeliver;
 
     public AbstractItem(String name) {
+        this(name, new PutItemIntoCart());
+    }
+
+    public AbstractItem(String name, PutIntoCart putIntoCart) {
         this.name = name;
+        this.putIntoCart = putIntoCart;
     }
 
     public String getName() {
@@ -27,6 +33,11 @@ public abstract class AbstractItem implements CartAble {
         int gramms = itemWeight();
         calculateDeliveryCost(cart, gramms);
         markReadyToDeliver();
+    }
+
+    @Override
+    public final void putIntoMyCart(Cart cart) {
+        putIntoCart.putIntoCart(cart, this::getName);
     }
 
     /**

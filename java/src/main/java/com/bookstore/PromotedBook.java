@@ -9,15 +9,9 @@ package com.bookstore;
 public class PromotedBook extends AbstractItemOnOffer {
 
     private static final int DEFAULT_WEIGHT_BOOK_GRAMMS = 500;
-    private final PutIntoCart putIntoCart = new PutPromoItemIntoCart();
 
     public PromotedBook(String name) {
-        super(name);
-    }
-
-    @Override
-    public void putIntoMyCart(Cart cart) {
-        putIntoCart.putIntoCart(cart, this::getName);
+        super(name, new PutPromoItemIntoCart());
     }
 
     @Override

@@ -8,8 +8,8 @@ package com.bookstore;
  */
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
-    public AbstractItemOnOffer(String name) {
-        super(name);
+    public AbstractItemOnOffer(String name, PutIntoCart putIntoCart) {
+        super(name, putIntoCart);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.bookstore;
 public class DiscountVoucher implements CartAble {
 
     private final int percentage;
+    private final PutIntoCart putIntoCart = new PutItemIntoCart();
 
     public DiscountVoucher(int percentage) {
         this.percentage = percentage;
@@ -10,7 +11,7 @@ public class DiscountVoucher implements CartAble {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add("Discount voucher for " + percentage + "% on your next order");
+        putIntoCart.putIntoCart(cart, () -> "Discount voucher for " + percentage + "% on your next order");
     }
 
 }

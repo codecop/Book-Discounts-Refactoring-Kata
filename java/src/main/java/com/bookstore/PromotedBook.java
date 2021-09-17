@@ -6,6 +6,8 @@ package com.bookstore;
  * - You get a discount on delivery if it is heavy.<br>
  * - You get a gift wrapping for free.<br>
  */
+
+//OnOffer could be decorator
 public class PromotedBook extends AbstractItemOnOffer {
 
     private final Book book;

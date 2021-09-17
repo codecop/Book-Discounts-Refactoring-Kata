@@ -30,6 +30,7 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
         buyTwoOnlyPayDeliveryForOne(cart);
     }
 
+    // onOffer
     protected boolean hasDiscountOnDelivery() {
         // default no discount on delivery
         return false;
@@ -41,6 +42,7 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
         }
     }
 
+    // onOffer
     protected abstract void handleGiftOptions(Cart cart);
 
 }

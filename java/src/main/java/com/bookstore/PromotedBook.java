@@ -8,29 +8,21 @@ package com.bookstore;
  */
 public class PromotedBook extends AbstractItemOnOffer {
 
-    private static final int DEFAULT_WEIGHT_BOOK_GRAMMS = 500;
+    private final Book book;
 
     public PromotedBook(String name) {
         super(name, new PutItemWithVoucherIntoCart());
+        this.book = new Book(name, new PutItemWithVoucherIntoCart());
     }
 
     @Override
     protected int itemWeight() {
-        if (getName().contains("C++")) {
-            // C++ books are usually heavy
-            return 750; // gramm
-
-        } else if (getName().contains("Good Parts")) {
-            // Good Parts are only few, so thin books
-            return 100; // gramm
-        }
-
-        return DEFAULT_WEIGHT_BOOK_GRAMMS;
+        return this.book.itemWeight();
     }
 
     @Override
     protected boolean hasDiscountOnDelivery() {
-        return itemWeight() >= DEFAULT_WEIGHT_BOOK_GRAMMS;
+        return itemWeight() >= Book.DEFAULT_WEIGHT_BOOK_GRAMMS;
     }
 
     @Override

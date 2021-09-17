@@ -9,25 +9,25 @@ import java.util.stream.Collectors;
  */
 public class Cart {
 
-    private final List<String> items = new ArrayList<>();
+    private final List<String> itemRepresentations = new ArrayList<>();
 
-    public void add(String item) {
-        items.add(item);
+    public void add(String itemRepresentation) {
+        itemRepresentations.add(itemRepresentation);
     }
 
     public boolean contains(String item) {
-        return items.contains(item);
+        return itemRepresentations.contains(item);
     }
 
-    public boolean containsTwiceOrMore(String item) {
-        return items.stream(). //
-                filter(i -> i.equalsIgnoreCase(item)). //
+    public boolean containsTwiceOrMore(String itemRepresentation) {
+        return itemRepresentations.stream(). //
+                filter(i -> i.equalsIgnoreCase(itemRepresentation)). //
                 count() >= 2;
     }
 
     @Override
     public String toString() {
         return "Your cart\n" + //
-                items.stream().collect(Collectors.joining("\n"));
+                itemRepresentations.stream().collect(Collectors.joining("\n"));
     }
 }

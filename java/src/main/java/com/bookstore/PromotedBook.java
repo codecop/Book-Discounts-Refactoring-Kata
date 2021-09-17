@@ -17,7 +17,7 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        putIntoCart.putIntoCart(cart, this);
+        putIntoCart.putIntoCart(cart, this::getName);
     }
 
     @Override

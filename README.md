@@ -1,34 +1,41 @@
 ﻿# Book Discounts Refactoring Kata
 
-This code is part of the software system of our book store. The current code
-deals with adding different goodies when delivering - e.g. discounts, promotions 
-or gifts - to orders of books.
+Exercises to practice refactoring coupled hierarchies.
+
+## Domain: Book Discounts Sub System
+
+This code is part of the software system of our book store. The given sub system
+deals with adding different goodies to orders of books when delivering, e.g. 
+discounts, promotions or gifts.
 
 The current hierarchy of classes is
  
              CartAble
-                |
-                |
+                |     \
+                |      \
+                |        DiscountVoucher
            AbstractItem      
           /             \
          /               \
-    AbstractItemOnOffer   Book
-               |
-               |
-          PromotedBook
+    AbstractItemOnOffer    Book & GiftWrapping
+             |
+             |
+        PromotedBook
 
+## Excercise
 
 This exercise is hard. It includes several classes which form a coupled hierarchy.
 Maybe start exploring a simpler code base first, which only has one level of hierarchy.
 
-## Your Task
+### Your Task
 
+*[Favour composition over inheritance](https://stackoverflow.com/questions/49002/prefer-composition-over-inheritance)*
+is a common phrase. Remove all hierarchies and refactor the code to only use composition. 
+(Implementing interfaces is allowed.)
 
-tbd
+### Motivation
 
-## Motivation
-
-We want an exercise for working with deep inheritance hierarchies. What need at least
+We want an exercise for working with deep inheritance hierarchies. We need at least
 
 * 4-5 levels of hierarchy
 * mutation on some levels

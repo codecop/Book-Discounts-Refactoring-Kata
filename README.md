@@ -22,7 +22,27 @@ The current hierarchy of classes is
              |
         PromotedBook
 
-## Excercise
+### Classes
+
+`CartAble` marks items like books and other services like vouchers or gift options which can be put into the shopping cart.
+
+`AbstractItem` is the base class of all our physical items. Most items are books but we also offer other things like gift cards.
+
+`Book` is the most used item. A book has a weight which causes delivery costs.
+
+`AbstractItemOnOffer` is for items (i.e. books) which can be on offer. Items on offer
+
+* Allow for a discount on delivery cost.
+* Allow for gift options.
+* Reduce the cost of delivery if you are buying two or more of the same kind.
+
+`PromotedBook` is a concrete book on promotion with several goodies:
+
+* You get a 10% discount on your next purchase.
+* You get a discount on delivery if it is heavy.
+* You get a gift wrapping for free.
+
+## Exercise
 
 This exercise is hard. It includes several classes which form a coupled hierarchy.
 Maybe start exploring a simpler code base first, which only has one level of hierarchy.

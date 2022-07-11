@@ -15,7 +15,7 @@ public class GiftWrapping extends AbstractItem {
     }
 
     @Override
-    protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, @SuppressWarnings("unused") int gramms) {
+    protected void calculateDeliveryCost(Cart cart, int gramms) {
         // no delivery cost
         markReadyToDeliver();
     }

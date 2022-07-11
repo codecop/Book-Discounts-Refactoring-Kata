@@ -8,6 +8,28 @@ import org.junit.jupiter.api.Test;
 class FullCartTest {
 
     @Test
+    void sampleTest() {
+        Cart cart = new Cart();
+
+        Book basicItem = new Book("C++ Functional programming");
+        basicItem.putIntoMyCart(cart);
+
+        PromotedBook promotedItem1 = new PromotedBook("Usable Software Design book");
+        promotedItem1.putIntoMyCart(cart);
+        PromotedBook promotedItem2 = new PromotedBook("Usable Software Design book");
+        promotedItem2.putIntoMyCart(cart);
+
+        basicItem.prepareDeliveryIn(cart);
+        assertEquals(27, basicItem.getDeliveryCost());
+
+        promotedItem1.prepareDeliveryIn(cart);
+        assertEquals(5, promotedItem1.getDeliveryCost());
+
+        promotedItem2.prepareDeliveryIn(cart);
+        assertEquals(5, promotedItem2.getDeliveryCost());
+    }
+
+    @Test
     void fullTest() {
         Cart cart = new Cart();
 
@@ -54,22 +76,22 @@ class FullCartTest {
         goodPartsBook.prepareDeliveryIn(cart);
         assertEquals(10, goodPartsBook.getDeliveryCost());
 
-        assertEquals("Your cart\n" +
-            "Software Design book\n" +
-            "C++ Functional programming\n" +
-            "JavaScript The Good Parts\n" +
-            "Gift wrapping for JavaScript The Good Parts\n" +
-            "Promoted Software Design book\n" +
-            "Discount voucher for 10% on your next order\n" +
-            "Promoted C++ book\n" +
-            "Discount voucher for 10% on your next order\n" +
-            "Promoted Good Parts book\n" +
-            "Discount voucher for 10% on your next order\n" +
-            "Promoted Good Parts book\n" +
-            "Discount voucher for 10% on your next order\n" +
-            "Gift wrapping for Promoted Software Design book\n" +
-            "Gift wrapping for Promoted C++ book\n" +
-            "Gift wrapping for Promoted Good Parts book", cart.toString());
+        assertEquals("Your cart\n" + //
+                "Software Design book\n" + //
+                "C++ Functional programming\n" + //
+                "JavaScript The Good Parts\n" + //
+                "Gift wrapping for JavaScript The Good Parts\n" + //
+                "Promoted Software Design book\n" + //
+                "Discount voucher for 10% on your next order\n" + //
+                "Promoted C++ book\n" + //
+                "Discount voucher for 10% on your next order\n" + //
+                "Promoted Good Parts book\n" + //
+                "Discount voucher for 10% on your next order\n" + //
+                "Promoted Good Parts book\n" + //
+                "Discount voucher for 10% on your next order\n" + //
+                "Gift wrapping for Promoted Software Design book\n" + //
+                "Gift wrapping for Promoted C++ book\n" + //
+                "Gift wrapping for Promoted Good Parts book", cart.toString());
     }
 
     @Test

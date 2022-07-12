@@ -6,11 +6,9 @@ package com.bookstore;
 public class Book extends AbstractItem {
 
     public Book(String name) {
-        this(name, new BookWeight(name));
-    }
-
-    private Book(String name, Weight weight) {
-        super(name, weight, new DeliveryCostLines(new DeliveryCostByWeight(weight)));
+        super(name, new DeliveryCostLines(//
+                new DeliveryCostByWeight(new BookWeight(name)) //
+        ));
     }
 
     @Override

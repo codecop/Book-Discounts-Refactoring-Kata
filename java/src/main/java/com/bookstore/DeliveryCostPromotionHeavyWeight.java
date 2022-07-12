@@ -1,6 +1,6 @@
 package com.bookstore;
 
-public class DeliveryCostPromotionHeavyWeight implements DeliveryCostCalculator.Calculation {
+public class DeliveryCostPromotionHeavyWeight implements DeliveryCostLine {
 
     private final Weight weight;
 
@@ -9,12 +9,12 @@ public class DeliveryCostPromotionHeavyWeight implements DeliveryCostCalculator.
     }
 
     @Override
-    public boolean use(Cart cart) {
+    public boolean useFor(Cart cart) {
         return weight.isHeavy();
     }
 
     @Override
-    public void apply(DeliveryCost deliveryCost) {
+    public void applyTo(DeliveryCost deliveryCost) {
         deliveryCost.onlyCountHalfTheWeight();
     }
 

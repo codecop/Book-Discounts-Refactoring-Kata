@@ -9,25 +9,18 @@ public abstract class AbstractItem implements CartAble {
     private static final int NOT_READY_TO_DELIVER = -1;
 
     private final String name;
-    private final Weight weight;
-    private final DeliveryCostLines deliveryCostParts;
-
-    protected final DeliveryCostCalculator deliveryCostCalculator = new DeliveryCostCalculator();
+    private final DeliveryCostLines deliveryCostLines;
+    private final DeliveryCostCalculator deliveryCostCalculator = new DeliveryCostCalculator();
 
     private boolean readyToDeliver;
 
-    public AbstractItem(String name, Weight weight, DeliveryCostLines deliveryCostParts) {
+    public AbstractItem(String name, DeliveryCostLines deliveryCostLines) {
         this.name = name;
-        this.weight = weight;
-        this.deliveryCostParts = deliveryCostParts;
+        this.deliveryCostLines = deliveryCostLines;
     }
 
     public String getName() {
         return name;
-    }
-
-    public Weight getWeight() {
-        return weight;
     }
 
     public void prepareDeliveryIn(Cart cart) {
@@ -35,7 +28,7 @@ public abstract class AbstractItem implements CartAble {
             throw new IllegalStateException("Can only calculate delivery costs for items in cart");
         }
 
-        deliveryCostParts.forEach(costPart -> deliveryCostCalculator.apply(costPart, cart));
+        deliveryCostLines.forEach(costLine -> deliveryCostCalculator.apply(costLine, cart));
         markReadyToDeliver();
     }
 

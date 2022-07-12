@@ -1,6 +1,6 @@
 package com.bookstore;
 
-public class DeliveryCostForTwoOrMore implements DeliveryCostCalculator.Calculation {
+public class DeliveryCostForTwoOrMore implements DeliveryCostLine {
 
     private final String bookName;
 
@@ -9,12 +9,12 @@ public class DeliveryCostForTwoOrMore implements DeliveryCostCalculator.Calculat
     }
 
     @Override
-    public boolean use(Cart cart) {
+    public boolean useFor(Cart cart) {
         return cart.containsTwiceOrMore(bookName);
     }
 
     @Override
-    public void apply(DeliveryCost deliveryCost) {
+    public void applyTo(DeliveryCost deliveryCost) {
         deliveryCost.halfCost();
     }
 

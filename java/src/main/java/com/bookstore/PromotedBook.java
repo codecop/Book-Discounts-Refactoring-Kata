@@ -13,7 +13,9 @@ public class PromotedBook extends AbstractItemOnOffer {
     }
 
     private PromotedBook(String name, Weight weight) {
-        super(name, weight, new DeliveryCostLines(new DeliveryCostPromotionHeavyWeight(weight)));
+        super(name, weight, new DeliveryCostLines( // 
+                new DeliveryCostPromotionHeavyWeight(weight) //
+        ));
     }
 
     @Override

@@ -7,7 +7,6 @@ public class GiftWrapping extends AbstractItem {
 
     public GiftWrapping(AbstractItem item) {
         super("Gift wrapping for " + item.getName(), //
-                new WrappingWeight(), //
                 DeliveryCostLines.none() // no delivery cost
         );
     }

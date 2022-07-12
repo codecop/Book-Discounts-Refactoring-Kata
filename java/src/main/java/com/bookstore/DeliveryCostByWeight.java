@@ -1,6 +1,6 @@
 package com.bookstore;
 
-public class DeliveryCostByWeight implements DeliveryCostCalculator.Calculation {
+public class DeliveryCostByWeight implements DeliveryCostLine {
 
     private final Weight weight;
 
@@ -9,12 +9,12 @@ public class DeliveryCostByWeight implements DeliveryCostCalculator.Calculation 
     }
 
     @Override
-    public boolean use(Cart cart) {
+    public boolean useFor(Cart cart) {
         return true;
     }
 
     @Override
-    public void apply(DeliveryCost deliveryCost) {
+    public void applyTo(DeliveryCost deliveryCost) {
         deliveryCost.basedOnWeight(weight.gram());
     }
 

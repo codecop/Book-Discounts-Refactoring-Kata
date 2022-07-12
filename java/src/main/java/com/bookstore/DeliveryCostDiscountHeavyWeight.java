@@ -1,10 +1,10 @@
 package com.bookstore;
 
-public class DeliveryCostPromotionHeavyWeight implements DeliveryCostLine {
+public class DeliveryCostDiscountHeavyWeight implements DeliveryCostLine {
 
     private final Weight weight;
 
-    public DeliveryCostPromotionHeavyWeight(Weight weight) {
+    public DeliveryCostDiscountHeavyWeight(Weight weight) {
         this.weight = weight;
     }
 

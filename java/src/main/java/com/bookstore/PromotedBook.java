@@ -13,15 +13,20 @@ public class PromotedBook extends AbstractItemOnOffer {
     }
 
     private PromotedBook(String name, Weight weight) {
-        super(name, weight, new DeliveryCostLines( // 
-                new DeliveryCostPromotionHeavyWeight(weight) //
-        ), new CartActions(), new CartActions(cart -> new GiftWrapping(name).putIntoMyCart(cart)));
+        super( // 
+                name, //
+                weight, //
+                new DeliveryCostLines(new DeliveryCostDiscountHeavyWeight(weight)), // 
+                new CartActions(cart -> tenPercentDiscountVoucher(cart)),
+                new CartActions(cart -> freeGiftWrappingFor(name, cart)));
     }
 
-    @Override
-    public void putIntoMyCart(Cart cart) {
-        super.putIntoMyCart(cart);
+    private static void tenPercentDiscountVoucher(Cart cart) {
         new DiscountVoucher(10).putIntoMyCart(cart);
+    }
+
+    private static void freeGiftWrappingFor(String name, Cart cart) {
+        new GiftWrapping(name).putIntoMyCart(cart);
     }
 
 }

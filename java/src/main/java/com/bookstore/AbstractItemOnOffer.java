@@ -8,12 +8,14 @@ package com.bookstore;
  */
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
-    public AbstractItemOnOffer(String name, Weight weight, DeliveryCostLines deliveryCostLines, CartActions postAddCart,
-            CartActions postPrepareDelivery) {
-        super(name, deliveryCostLines.add( //
-                new DeliveryCostForTwoOrMore(name), //
-                new DeliveryCostByWeight(weight) // 
-        ), postAddCart, postPrepareDelivery);
+    public AbstractItemOnOffer(String name, Weight weight, DeliveryCostLines deliveryCostLines, //
+            CartActions postAddCart, CartActions postPrepareDelivery) {
+        super( // 
+                name, //
+                deliveryCostLines.add( //
+                        new DeliveryCostByWeight(weight), // 
+                        new DeliveryCostDiscountForTwoOrMore(name) //
+                ), postAddCart, postPrepareDelivery);
     }
 
 }

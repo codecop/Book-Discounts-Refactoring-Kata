@@ -1,10 +1,10 @@
 package com.bookstore;
 
-public class DeliveryCostForTwoOrMore implements DeliveryCostLine {
+public class DeliveryCostDiscountForTwoOrMore implements DeliveryCostLine {
 
     private final String bookName;
 
-    public DeliveryCostForTwoOrMore(String bookName) {
+    public DeliveryCostDiscountForTwoOrMore(String bookName) {
         this.bookName = bookName;
     }
 

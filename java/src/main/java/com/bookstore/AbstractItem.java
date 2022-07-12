@@ -10,19 +10,22 @@ public abstract class AbstractItem implements CartAble {
 
     private final String name;
     private final DeliveryCostLines deliveryCostLines;
-    private final DeliveryCostCalculator deliveryCostCalculator = new DeliveryCostCalculator();
+    private final CartActions postAddCartActions;
+    private final CartActions postPrepareDeliveryActions;
 
+    private final DeliveryCostCalculator deliveryCostCalculator = new DeliveryCostCalculator();
     private boolean readyToDeliver;
 
-    private final CartActions postAddCart;
-    private final CartActions postPrepareDelivery;
+    public AbstractItem(String name, DeliveryCostLines deliveryCostLines) {
+        this(name, deliveryCostLines, CartActions.none(), CartActions.none());
+    }
 
-    public AbstractItem(String name, DeliveryCostLines deliveryCostLines, CartActions postAddCart,
-            CartActions postPrepareDelivery) {
+    public AbstractItem(String name, DeliveryCostLines deliveryCostLines, //
+            CartActions postAddCart, CartActions postPrepareDelivery) {
         this.name = name;
         this.deliveryCostLines = deliveryCostLines;
-        this.postAddCart = postAddCart;
-        this.postPrepareDelivery = postPrepareDelivery;
+        this.postAddCartActions = postAddCart;
+        this.postPrepareDeliveryActions = postPrepareDelivery;
     }
 
     public String getName() {
@@ -31,8 +34,8 @@ public abstract class AbstractItem implements CartAble {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(getName());
-        postAddCart.run(cart);
+        cart.add(this.name);
+        postAddCartActions.run(cart);
     }
 
     public void prepareDeliveryIn(Cart cart) {
@@ -41,12 +44,10 @@ public abstract class AbstractItem implements CartAble {
         }
 
         deliveryCostLines.forEach(costLine -> deliveryCostCalculator.apply(costLine, cart));
-        markReadyToDeliver();
-        postPrepareDelivery.run(cart);
-    }
 
-    protected final void markReadyToDeliver() {
         readyToDeliver = true;
+
+        postPrepareDeliveryActions.run(cart);
     }
 
     public final int getDeliveryCost() {
@@ -57,7 +58,7 @@ public abstract class AbstractItem implements CartAble {
     }
 
     @Override
-    public final String toString() {
+    public String toString() {
         return name + " (" + getDeliveryCost() + "EUR)";
     }
 }

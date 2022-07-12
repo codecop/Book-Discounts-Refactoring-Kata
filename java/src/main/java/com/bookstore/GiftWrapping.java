@@ -10,9 +10,9 @@ public class GiftWrapping extends AbstractItem {
     }
 
     public GiftWrapping(String itemName) {
-        super("Gift wrapping for " + itemName, //
-                DeliveryCostLines.none(), // no delivery cost
-                CartActions.none(), CartActions.none());
+        super( //
+                "Gift wrapping for " + itemName, //
+                DeliveryCostLines.none()); // no delivery cost
     }
 
 }

@@ -6,9 +6,9 @@ package com.bookstore;
 public class Book extends AbstractItem {
 
     public Book(String name) {
-        super(name, new DeliveryCostLines(//
-                new DeliveryCostByWeight(new BookWeight(name)) //
-        ), CartActions.none(), CartActions.none());
+        super( //
+                name, //
+                new DeliveryCostLines(new DeliveryCostByWeight(new BookWeight(name))));
     }
 
 }

@@ -20,11 +20,9 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     protected void calculateDeliveryCost(Cart cart, int gramms) {
-        int reduceCost = 1;
         if (hasDiscountOnDelivery()) {
-            reduceCost = 2;
+            dc.onlyCountHalfWeight();
         }
-        dc.setReduction(reduceCost);
 
         super.calculateDeliveryCost(cart, gramms);
 

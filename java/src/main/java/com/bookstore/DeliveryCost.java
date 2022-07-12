@@ -13,8 +13,8 @@ public class DeliveryCost {
         }
     }
 
-    public void setReduction(int reduceCost) {
-        this.reduceCost = reduceCost;
+    public void onlyCountHalfWeight() {
+        this.reduceCost = 2;
 
     }
 

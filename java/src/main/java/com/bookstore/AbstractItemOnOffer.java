@@ -24,8 +24,9 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
         if (hasDiscountOnDelivery()) {
             reduceCost = 2;
         }
+        dc.setReduction(reduceCost);
 
-        super.calculateDeliveryCost(cart, gramms / reduceCost);
+        super.calculateDeliveryCost(cart, gramms);
 
         buyTwoOnlyPayDeliveryForOne(cart);
     }

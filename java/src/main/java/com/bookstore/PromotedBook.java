@@ -10,17 +10,13 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     public PromotedBook(String name) {
         super(name, new BookWeight(name));
+        super.calcs.add(new DeliveryCostPromotionHeavyWeight(getWeight())); // hack
     }
 
     @Override
     public void putIntoMyCart(Cart cart) {
         cart.add(getName());
         new DiscountVoucher(10).putIntoMyCart(cart);
-    }
-
-    @Override
-    protected boolean hasDiscountOnDelivery() {
-        return getWeight().isHeavy();
     }
 
     @Override

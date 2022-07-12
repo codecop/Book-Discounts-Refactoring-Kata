@@ -2,7 +2,7 @@ package com.bookstore;
 
 public interface Weight {
 
-    int itemWeight();
+    int gram();
 
     boolean isHeavy();
 

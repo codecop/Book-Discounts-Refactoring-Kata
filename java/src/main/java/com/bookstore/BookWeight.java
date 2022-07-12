@@ -2,31 +2,31 @@ package com.bookstore;
 
 public class BookWeight implements Weight {
 
-    private static final int DEFAULT_WEIGHT_BOOK_GRAMMS = 500;
+    private static final int DEFAULT_BOOK_GRAM = 500;
 
-    private final String name;
+    private final String bookName;
 
-    public BookWeight(String name) {
-        this.name = name;
+    public BookWeight(String bookName) {
+        this.bookName = bookName;
     }
 
     @Override
-    public int itemWeight() {
-        if (name.contains("C++")) {
+    public int gram() {
+        if (bookName.contains("C++")) {
             // C++ books are usually heavy
-            return 750; // gramm
+            return 750;
 
-        } else if (name.contains("Good Parts")) {
+        } else if (bookName.contains("Good Parts")) {
             // Good Parts are only few, so thin books
-            return 100; // gramms
+            return 100;
         }
 
-        return DEFAULT_WEIGHT_BOOK_GRAMMS;
+        return DEFAULT_BOOK_GRAM;
     }
 
     @Override
     public boolean isHeavy() {
-        return itemWeight() >= DEFAULT_WEIGHT_BOOK_GRAMMS;
+        return gram() >= DEFAULT_BOOK_GRAM;
     }
 
 }

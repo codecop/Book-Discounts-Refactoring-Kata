@@ -31,7 +31,7 @@ public abstract class AbstractItem implements CartAble {
             throw new IllegalStateException("Can only calculate delivery costs for items in cart");
         }
 
-        int gramms = weight.itemWeight();
+        int gramms = weight.gram();
         calculateDeliveryCost(cart, gramms);
         markReadyToDeliver();
     }

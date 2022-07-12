@@ -3,7 +3,7 @@ package com.bookstore;
 public class WrappingWeight implements Weight {
 
     @Override
-    public int itemWeight() {
+    public int gram() {
         return 5;
     }
 

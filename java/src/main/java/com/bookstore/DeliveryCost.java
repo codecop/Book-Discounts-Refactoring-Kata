@@ -26,6 +26,20 @@ public class DeliveryCost {
         this.reduceCostFactor = reduceCostFactor;
     }
 
+    interface DeliveryCostCalculation {
+
+        boolean hasDiscount();
+
+        void apply(DeliveryCost deliveryCost);
+
+    }
+
+    public void apply(DeliveryCostCalculation calculation) {
+        if (calculation.hasDiscount()) {
+            calculation.apply(this);
+        }
+    }
+
     public int calculate() {
         if (bookWeightGram == -1) {
             // no cost

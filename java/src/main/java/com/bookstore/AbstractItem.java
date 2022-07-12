@@ -38,7 +38,17 @@ public abstract class AbstractItem implements CartAble {
     }
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
-        deliveryCost.basedOnWeight(gramms);
+        deliveryCost.apply(new DeliveryCost.DeliveryCostCalculation() {
+            @Override
+            public boolean hasDiscount() {
+                return true;
+            }
+
+            @Override
+            public void apply(DeliveryCost deliveryCost) {
+                deliveryCost.basedOnWeight(weight.gram());
+            }
+        });
     }
 
     protected final void markReadyToDeliver() {

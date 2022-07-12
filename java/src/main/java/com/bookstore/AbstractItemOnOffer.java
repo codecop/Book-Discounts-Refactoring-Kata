@@ -20,16 +20,32 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     protected void calculateDeliveryCost(Cart cart, int gramms) {
-        if (hasDiscountOnDelivery()) {
-            deliveryCost.onlyCountHalfTheWeight();
-        }
+        deliveryCost.apply(new DeliveryCost.DeliveryCostCalculation() {
+            @Override
+            public boolean hasDiscount() {
+                return hasDiscountOnDelivery();
+            }
+
+            @Override
+            public void apply(DeliveryCost deliveryCost) {
+                deliveryCost.onlyCountHalfTheWeight();
+            }
+        });
 
         super.calculateDeliveryCost(cart, gramms);
 
         // buyTwoOnlyPayDeliveryForOne
-        if (cart.containsTwiceOrMore(getName())) {
-            deliveryCost.halfCost();
-        }
+        deliveryCost.apply(new DeliveryCost.DeliveryCostCalculation() {
+            @Override
+            public boolean hasDiscount() {
+                return cart.containsTwiceOrMore(getName());
+            }
+
+            @Override
+            public void apply(DeliveryCost deliveryCost) {
+                deliveryCost.halfCost();
+            }
+        });
     }
 
     protected boolean hasDiscountOnDelivery() {

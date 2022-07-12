@@ -5,8 +5,11 @@ package com.bookstore;
  */
 public class Book extends AbstractItem {
 
+    private final Weight weight;
+
     public Book(String name) {
         super(name);
+        weight = new BookWeight(name);
     }
 
     @Override
@@ -16,7 +19,7 @@ public class Book extends AbstractItem {
 
     @Override
     protected int itemWeight() {
-        return new BookWeight(getName()).itemWeight();
+        return weight.itemWeight();
     }
 
 }

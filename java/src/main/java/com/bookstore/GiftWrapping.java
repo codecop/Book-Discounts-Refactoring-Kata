@@ -5,8 +5,11 @@ package com.bookstore;
  */
 public class GiftWrapping extends AbstractItem {
 
+    private final Weight weight;
+
     public GiftWrapping(AbstractItem item) {
         super("Gift wrapping for " + item.getName());
+        weight = new WrappingWeight();
     }
 
     @Override
@@ -22,7 +25,7 @@ public class GiftWrapping extends AbstractItem {
 
     @Override
     protected int itemWeight() {
-        return 5;
+        return weight.itemWeight();
     }
 
 }

@@ -11,7 +11,7 @@ public abstract class AbstractItem implements CartAble {
     private final String name;
     private final Weight weight;
 
-    protected final DeliveryCostCalculator deliveryCost = new DeliveryCostCalculator();
+    protected final DeliveryCostCalculator deliveryCostCalculator = new DeliveryCostCalculator();
     private boolean readyToDeliver;
 
     public AbstractItem(String name, Weight weight) {
@@ -32,23 +32,12 @@ public abstract class AbstractItem implements CartAble {
             throw new IllegalStateException("Can only calculate delivery costs for items in cart");
         }
 
-        int gramms = weight.gram();
-        calculateDeliveryCost(cart, gramms);
+        calculateDeliveryCost(cart, 0);
         markReadyToDeliver();
     }
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
-        deliveryCost.apply(new DeliveryCostCalculator.Calculation() {
-            @Override
-            public boolean use() {
-                return true;
-            }
-
-            @Override
-            public void apply(DeliveryCost deliveryCost) {
-                deliveryCost.basedOnWeight(weight.gram());
-            }
-        });
+        deliveryCostCalculator.apply(new DeliveryCostByWeight(weight));
     }
 
     protected final void markReadyToDeliver() {
@@ -57,7 +46,7 @@ public abstract class AbstractItem implements CartAble {
 
     public final int getDeliveryCost() {
         if (readyToDeliver) {
-            return deliveryCost.calculate();
+            return deliveryCostCalculator.calculate();
         }
         return NOT_READY_TO_DELIVER;
     }

@@ -8,6 +8,18 @@ package com.bookstore;
  */
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
+    private class DeliveryCostPromotionHeavyWeight implements DeliveryCostCalculator.Calculation {
+        @Override
+        public boolean use() {
+            return hasDiscountOnDelivery();
+        }
+
+        @Override
+        public void apply(DeliveryCost deliveryCost) {
+            deliveryCost.onlyCountHalfTheWeight();
+        }
+    }
+
     public AbstractItemOnOffer(String name, Weight weight) {
         super(name, weight);
     }
@@ -20,32 +32,12 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     protected void calculateDeliveryCost(Cart cart, int gramms) {
-        deliveryCost.apply(new DeliveryCostCalculator.Calculation() {
-            @Override
-            public boolean use() {
-                return hasDiscountOnDelivery();
-            }
-
-            @Override
-            public void apply(DeliveryCost deliveryCost) {
-                deliveryCost.onlyCountHalfTheWeight();
-            }
-        });
+        deliveryCostCalculator.apply(new DeliveryCostPromotionHeavyWeight());
 
         super.calculateDeliveryCost(cart, gramms);
 
         // buyTwoOnlyPayDeliveryForOne
-        deliveryCost.apply(new DeliveryCostCalculator.Calculation() {
-            @Override
-            public boolean use() {
-                return cart.containsTwiceOrMore(getName());
-            }
-
-            @Override
-            public void apply(DeliveryCost deliveryCost) {
-                deliveryCost.halfCost();
-            }
-        });
+        deliveryCostCalculator.apply(new DeliveryCostForTwoOrMore(getName(), cart));
     }
 
     protected boolean hasDiscountOnDelivery() {

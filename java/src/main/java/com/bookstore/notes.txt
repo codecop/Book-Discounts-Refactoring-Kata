@@ -6,4 +6,8 @@ Start
 * <cleanup> -> wrap list of calculations
 * handleGiftOptions -> CartActions postPrepareDelivery to run
 
-All classes are configurations and could be inlined or created by a factory. 
+All classes are configurations and could be in-lined or created by a factory. 
+
+---
+
+Run 2.5 hours.

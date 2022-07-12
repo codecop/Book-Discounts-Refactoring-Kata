@@ -21,23 +21,20 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
     @Override
     protected void calculateDeliveryCost(Cart cart, int gramms) {
         if (hasDiscountOnDelivery()) {
-            dc.onlyCountHalfWeight();
+            deliveryCost.onlyCountHalfWeight();
         }
 
         super.calculateDeliveryCost(cart, gramms);
 
-        buyTwoOnlyPayDeliveryForOne(cart);
+        // buyTwoOnlyPayDeliveryForOne
+        if (cart.containsTwiceOrMore(getName())) {
+            deliveryCost.halfCost();
+        }
     }
 
     protected boolean hasDiscountOnDelivery() {
         // default no discount on delivery
         return false;
-    }
-
-    private void buyTwoOnlyPayDeliveryForOne(Cart cart) {
-        if (cart.containsTwiceOrMore(getName())) {
-            deliveryCost /= 2;
-        }
     }
 
     protected abstract void handleGiftOptions(Cart cart);

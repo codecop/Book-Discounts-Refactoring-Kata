@@ -1,7 +1,8 @@
 package com.bookstore;
 
 /**
- * Base class of all our physical items. Most items are books but we also offer other things like gift cards.
+ * Base class of all our physical items. Most items are books but we also offer other things like
+ * gift cards.
  */
 public abstract class AbstractItem implements CartAble {
 
@@ -21,7 +22,7 @@ public abstract class AbstractItem implements CartAble {
     public String getName() {
         return name;
     }
-    
+
     public Weight getWeight() {
         return weight;
     }
@@ -46,7 +47,7 @@ public abstract class AbstractItem implements CartAble {
 
     public final int getDeliveryCost() {
         if (readyToDeliver) {
-            return deliveryCost.deliveryCost;
+            return deliveryCost.calculate();
         }
         return NOT_READY_TO_DELIVER;
     }

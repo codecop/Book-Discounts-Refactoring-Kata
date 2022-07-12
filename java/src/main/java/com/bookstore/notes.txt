@@ -4,3 +4,4 @@ Start
 * calculateDeliveryCost -> list of calculations (with temporary hack)
 * hasDiscountOnDelivery -> add to list of calculations
 * <cleanup> -> wrap list of calculations
+* handleGiftOptions -> CartActions postPrepareDelivery to run

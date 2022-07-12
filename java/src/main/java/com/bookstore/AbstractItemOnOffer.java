@@ -20,9 +20,9 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     @Override
     protected void calculateDeliveryCost(Cart cart, int gramms) {
-        deliveryCost.apply(new DeliveryCost.DeliveryCostCalculation() {
+        deliveryCost.apply(new DeliveryCostCalculator.Calculation() {
             @Override
-            public boolean hasDiscount() {
+            public boolean use() {
                 return hasDiscountOnDelivery();
             }
 
@@ -35,9 +35,9 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
         super.calculateDeliveryCost(cart, gramms);
 
         // buyTwoOnlyPayDeliveryForOne
-        deliveryCost.apply(new DeliveryCost.DeliveryCostCalculation() {
+        deliveryCost.apply(new DeliveryCostCalculator.Calculation() {
             @Override
-            public boolean hasDiscount() {
+            public boolean use() {
                 return cart.containsTwiceOrMore(getName());
             }
 

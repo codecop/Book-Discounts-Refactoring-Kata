@@ -11,7 +11,7 @@ public abstract class AbstractItem implements CartAble {
     private final String name;
     private final Weight weight;
 
-    protected final DeliveryCost deliveryCost = new DeliveryCost();
+    protected final DeliveryCostCalculator deliveryCost = new DeliveryCostCalculator();
     private boolean readyToDeliver;
 
     public AbstractItem(String name, Weight weight) {
@@ -38,9 +38,9 @@ public abstract class AbstractItem implements CartAble {
     }
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
-        deliveryCost.apply(new DeliveryCost.DeliveryCostCalculation() {
+        deliveryCost.apply(new DeliveryCostCalculator.Calculation() {
             @Override
-            public boolean hasDiscount() {
+            public boolean use() {
                 return true;
             }
 

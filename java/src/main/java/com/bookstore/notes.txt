@@ -5,3 +5,5 @@ Start
 * hasDiscountOnDelivery -> add to list of calculations
 * <cleanup> -> wrap list of calculations
 * handleGiftOptions -> CartActions postPrepareDelivery to run
+
+All classes are configurations and could be inlined or created by a factory. 

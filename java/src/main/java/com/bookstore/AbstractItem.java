@@ -29,6 +29,12 @@ public abstract class AbstractItem implements CartAble {
         return name;
     }
 
+    @Override
+    public void putIntoMyCart(Cart cart) {
+        cart.add(getName());
+        postAddCart.run(cart);
+    }
+
     public void prepareDeliveryIn(Cart cart) {
         if (!cart.contains(this.name)) {
             throw new IllegalStateException("Can only calculate delivery costs for items in cart");

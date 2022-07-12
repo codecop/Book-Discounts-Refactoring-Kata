@@ -20,7 +20,7 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     public void putIntoMyCart(Cart cart) {
-        cart.add(getName());
+        super.putIntoMyCart(cart);
         new DiscountVoucher(10).putIntoMyCart(cart);
     }
 

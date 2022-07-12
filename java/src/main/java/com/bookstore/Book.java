@@ -11,9 +11,4 @@ public class Book extends AbstractItem {
         ), CartActions.none(), CartActions.none());
     }
 
-    @Override
-    public void putIntoMyCart(Cart cart) {
-        cart.add(getName());
-    }
-
 }

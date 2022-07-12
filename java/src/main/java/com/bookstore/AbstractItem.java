@@ -21,6 +21,10 @@ public abstract class AbstractItem implements CartAble {
     public String getName() {
         return name;
     }
+    
+    public Weight getWeight() {
+        return weight;
+    }
 
     public void prepareDeliveryIn(Cart cart) {
         if (!cart.contains(this.name)) {

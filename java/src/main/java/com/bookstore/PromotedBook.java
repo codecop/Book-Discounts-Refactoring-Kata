@@ -8,11 +8,8 @@ package com.bookstore;
  */
 public class PromotedBook extends AbstractItemOnOffer {
 
-    private final Weight weight;
-
     public PromotedBook(String name) {
         super(name, new BookWeight(name));
-        weight = new BookWeight(name);
     }
 
     @Override
@@ -23,7 +20,7 @@ public class PromotedBook extends AbstractItemOnOffer {
 
     @Override
     protected boolean hasDiscountOnDelivery() {
-        return weight.isHeavy();
+        return getWeight().isHeavy();
     }
 
     @Override

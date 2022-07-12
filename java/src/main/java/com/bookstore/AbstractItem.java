@@ -11,6 +11,7 @@ public abstract class AbstractItem implements CartAble {
     private final Weight weight;
 
     protected int deliveryCost;
+    protected final DeliveryCost dc = new DeliveryCost();
     private boolean readyToDeliver;
 
     public AbstractItem(String name, Weight weight) {
@@ -37,11 +38,8 @@ public abstract class AbstractItem implements CartAble {
     }
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
-        if (gramms <= 500) {
-            deliveryCost = 10;
-        } else {
-            deliveryCost = (int) Math.sqrt(gramms);
-        }
+        dc.basedOnWeight(gramms);
+        deliveryCost = dc.deliveryCost;
     }
 
     protected final void markReadyToDeliver() {

@@ -1,7 +1,5 @@
 package com.bookstore;
 
-import java.util.Arrays;
-
 /**
  * Some items (i.e. books) can be on offer. Items on offer<br>
  * - Allow for a discount on delivery cost.<br>
@@ -10,9 +8,9 @@ import java.util.Arrays;
  */
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
-    public AbstractItemOnOffer(String name, Weight weight) {
-        super(name, weight, Arrays.asList(new DeliveryCostByWeight(weight), //
-                new DeliveryCostForTwoOrMore(name)));
+    public AbstractItemOnOffer(String name, Weight weight, DeliveryCostLines deliveryCostParts) {
+        super(name, weight, //
+                deliveryCostParts.add(new DeliveryCostByWeight(weight), new DeliveryCostForTwoOrMore(name)));
     }
 
     @Override

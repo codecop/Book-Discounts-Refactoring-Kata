@@ -9,8 +9,11 @@ package com.bookstore;
 public class PromotedBook extends AbstractItemOnOffer {
 
     public PromotedBook(String name) {
-        super(name, new BookWeight(name));
-        super.calcs.add(new DeliveryCostPromotionHeavyWeight(getWeight())); // hack
+        this(name, new BookWeight(name));
+    }
+
+    private PromotedBook(String name, Weight weight) {
+        super(name, weight, new DeliveryCostLines(new DeliveryCostPromotionHeavyWeight(weight)));
     }
 
     @Override

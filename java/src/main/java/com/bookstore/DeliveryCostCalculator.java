@@ -4,7 +4,7 @@ public class DeliveryCostCalculator {
 
     private final DeliveryCost deliveryCost = new DeliveryCost();
 
-    interface Calculation {
+    interface Calculation { // TODO DeliveryCostPart 
 
         boolean use(Cart cart);
 

@@ -11,7 +11,7 @@ public class PromotedBook extends AbstractItemOnOffer {
     private final Weight weight;
 
     public PromotedBook(String name) {
-        super(name);
+        super(name, new BookWeight(name));
         weight = new BookWeight(name);
     }
 
@@ -19,11 +19,6 @@ public class PromotedBook extends AbstractItemOnOffer {
     public void putIntoMyCart(Cart cart) {
         cart.add(getName());
         new DiscountVoucher(10).putIntoMyCart(cart);
-    }
-
-    @Override
-    protected int itemWeight() {
-        return weight.itemWeight();
     }
 
     @Override

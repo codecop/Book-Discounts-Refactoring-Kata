@@ -8,11 +8,14 @@ public abstract class AbstractItem implements CartAble {
     private static final int NOT_READY_TO_DELIVER = -1;
 
     private final String name;
+    private final Weight weight;
+
     protected int deliveryCost;
     private boolean readyToDeliver;
 
-    public AbstractItem(String name) {
+    public AbstractItem(String name, Weight weight) {
         this.name = name;
+        this.weight = weight;
     }
 
     public String getName() {
@@ -32,7 +35,9 @@ public abstract class AbstractItem implements CartAble {
     /**
      * Every item needs to provide its weight.
      */
-    protected abstract int itemWeight();
+    private int itemWeight() {
+        return weight.itemWeight();
+    }
 
     protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
         if (gramms <= 500) {

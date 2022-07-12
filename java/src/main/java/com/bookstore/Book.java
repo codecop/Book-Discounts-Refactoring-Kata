@@ -5,21 +5,13 @@ package com.bookstore;
  */
 public class Book extends AbstractItem {
 
-    private final Weight weight;
-
     public Book(String name) {
-        super(name);
-        weight = new BookWeight(name);
+        super(name, new BookWeight(name));
     }
 
     @Override
     public void putIntoMyCart(Cart cart) {
         cart.add(getName());
-    }
-
-    @Override
-    protected int itemWeight() {
-        return weight.itemWeight();
     }
 
 }

@@ -1,3 +1,5 @@
 Start
 * itemWeight -> Weight and BookWeight, WrappingWeight
 * deliveryCost -> DeliveryCost wrapper (does not remove abstract methods) 
+* calculateDeliveryCost -> list of calculations (with temporary hack)
+* hasDiscountOnDelivery -> add to list of calculations

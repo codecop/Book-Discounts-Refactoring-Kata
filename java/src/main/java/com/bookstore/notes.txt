@@ -3,3 +3,4 @@ Start
 * deliveryCost -> DeliveryCost wrapper (does not remove abstract methods) 
 * calculateDeliveryCost -> list of calculations (with temporary hack)
 * hasDiscountOnDelivery -> add to list of calculations
+* <cleanup> -> wrap list of calculations

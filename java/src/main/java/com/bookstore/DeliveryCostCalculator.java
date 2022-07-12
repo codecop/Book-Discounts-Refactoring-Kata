@@ -6,14 +6,14 @@ public class DeliveryCostCalculator {
 
     interface Calculation {
 
-        boolean use();
+        boolean use(Cart cart);
 
         void apply(DeliveryCost deliveryCost);
 
     }
 
-    public void apply(Calculation calculation) {
-        if (calculation.use()) {
+    public void apply(Calculation calculation, Cart cart) {
+        if (calculation.use(cart)) {
             calculation.apply(deliveryCost);
         }
     }

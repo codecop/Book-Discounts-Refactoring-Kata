@@ -1,5 +1,8 @@
 package com.bookstore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Base class of all our physical items. Most items are books but we also offer other things like
  * gift cards.
@@ -10,13 +13,15 @@ public abstract class AbstractItem implements CartAble {
 
     private final String name;
     private final Weight weight;
+    protected final List<DeliveryCostCalculator.Calculation> calcs;
 
     protected final DeliveryCostCalculator deliveryCostCalculator = new DeliveryCostCalculator();
     private boolean readyToDeliver;
 
-    public AbstractItem(String name, Weight weight) {
+    public AbstractItem(String name, Weight weight, List<DeliveryCostCalculator.Calculation> calcs) {
         this.name = name;
         this.weight = weight;
+        this.calcs = new ArrayList<>(calcs);
     }
 
     public String getName() {
@@ -32,12 +37,8 @@ public abstract class AbstractItem implements CartAble {
             throw new IllegalStateException("Can only calculate delivery costs for items in cart");
         }
 
-        calculateDeliveryCost(cart, 0);
+        calcs.forEach(c -> deliveryCostCalculator.apply(c, cart));
         markReadyToDeliver();
-    }
-
-    protected void calculateDeliveryCost(@SuppressWarnings("unused") Cart cart, int gramms) {
-        deliveryCostCalculator.apply(new DeliveryCostByWeight(weight));
     }
 
     protected final void markReadyToDeliver() {

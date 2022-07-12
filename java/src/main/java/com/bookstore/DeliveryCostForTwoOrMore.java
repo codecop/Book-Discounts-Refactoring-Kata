@@ -3,15 +3,13 @@ package com.bookstore;
 public class DeliveryCostForTwoOrMore implements DeliveryCostCalculator.Calculation {
 
     private final String bookName;
-    private final Cart cart;
 
-    public DeliveryCostForTwoOrMore(String bookName, Cart cart) {
+    public DeliveryCostForTwoOrMore(String bookName) {
         this.bookName = bookName;
-        this.cart = cart;
     }
 
     @Override
-    public boolean use() {
+    public boolean use(Cart cart) {
         return cart.containsTwiceOrMore(bookName);
     }
 

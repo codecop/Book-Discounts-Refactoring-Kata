@@ -9,7 +9,7 @@ public class DeliveryCostByWeight implements DeliveryCostCalculator.Calculation 
     }
 
     @Override
-    public boolean use() {
+    public boolean use(Cart cart) {
         return true;
     }
 

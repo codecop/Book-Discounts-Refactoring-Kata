@@ -1,5 +1,8 @@
 package com.bookstore;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Some items (i.e. books) can be on offer. Items on offer<br>
  * - Allow for a discount on delivery cost.<br>
@@ -10,7 +13,7 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
 
     private class DeliveryCostPromotionHeavyWeight implements DeliveryCostCalculator.Calculation {
         @Override
-        public boolean use() {
+        public boolean use(Cart cart) {
             return hasDiscountOnDelivery();
         }
 
@@ -21,23 +24,15 @@ public abstract class AbstractItemOnOffer extends AbstractItem {
     }
 
     public AbstractItemOnOffer(String name, Weight weight) {
-        super(name, weight);
+        super(name, weight, Arrays.asList(new DeliveryCostByWeight(weight), //
+                new DeliveryCostForTwoOrMore(name)));
+        super.calcs.add(new DeliveryCostPromotionHeavyWeight()); // hack
     }
 
     @Override
     public void prepareDeliveryIn(Cart cart) {
         super.prepareDeliveryIn(cart);
         handleGiftOptions(cart);
-    }
-
-    @Override
-    protected void calculateDeliveryCost(Cart cart, int gramms) {
-        deliveryCostCalculator.apply(new DeliveryCostPromotionHeavyWeight());
-
-        super.calculateDeliveryCost(cart, gramms);
-
-        // buyTwoOnlyPayDeliveryForOne
-        deliveryCostCalculator.apply(new DeliveryCostForTwoOrMore(getName(), cart));
     }
 
     protected boolean hasDiscountOnDelivery() {

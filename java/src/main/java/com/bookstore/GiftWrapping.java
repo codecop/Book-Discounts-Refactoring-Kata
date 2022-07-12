@@ -6,9 +6,13 @@ package com.bookstore;
 public class GiftWrapping extends AbstractItem {
 
     public GiftWrapping(AbstractItem item) {
-        super("Gift wrapping for " + item.getName(), //
-                DeliveryCostLines.none() // no delivery cost
-        );
+        this(item.getName());
+    }
+
+    public GiftWrapping(String itemName) {
+        super("Gift wrapping for " + itemName, //
+                DeliveryCostLines.none(), // no delivery cost
+                CartActions.none(), CartActions.none());
     }
 
     @Override

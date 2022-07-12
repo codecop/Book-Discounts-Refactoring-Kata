@@ -8,19 +8,12 @@ package com.bookstore;
  */
 public abstract class AbstractItemOnOffer extends AbstractItem {
 
-    public AbstractItemOnOffer(String name, Weight weight, DeliveryCostLines deliveryCostLines) {
+    public AbstractItemOnOffer(String name, Weight weight, DeliveryCostLines deliveryCostLines, CartActions postAddCart,
+            CartActions postPrepareDelivery) {
         super(name, deliveryCostLines.add( //
                 new DeliveryCostForTwoOrMore(name), //
                 new DeliveryCostByWeight(weight) // 
-        ));
+        ), postAddCart, postPrepareDelivery);
     }
-
-    @Override
-    public void prepareDeliveryIn(Cart cart) {
-        super.prepareDeliveryIn(cart);
-        handleGiftOptions(cart);
-    }
-
-    protected abstract void handleGiftOptions(Cart cart);
 
 }

@@ -1,4 +1,4 @@
-﻿# Book Discounts Refactoring Kata
+# Book Discounts Refactoring Kata
 
 Exercises to practice refactoring coupled hierarchies.
 

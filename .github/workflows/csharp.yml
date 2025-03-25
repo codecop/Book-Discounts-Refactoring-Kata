@@ -1,0 +1,31 @@
+name: Test Csharp
+
+on:
+  push:
+    paths:
+      - 'csharp/**'
+      - '.github/workflows/csharp.yml'
+  pull_request:
+    paths:
+      - 'csharp/**'
+      - '.github/workflows/csharp.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Set up dependencies
+        working-directory: csharp
+        run: dotnet restore
+
+      - name: Build and test
+        working-directory: csharp
+        run: dotnet test

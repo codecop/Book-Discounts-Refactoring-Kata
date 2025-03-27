@@ -1,0 +1,11 @@
+{
+  "name": "BookDiscounts",
+  "version": "0.1.0",
+  "protos": [ "Cart", "Book"],
+  "dependencies": {
+    "libs": [],
+    "headers": [],
+    "protos": [],
+    "packages": []
+  }
+}

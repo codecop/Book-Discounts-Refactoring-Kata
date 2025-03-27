@@ -35,7 +35,7 @@ PromotedBook := AbstractItemOnOffer clone do(
     )
 
     handleGiftOptions := method(cart,
-        GiftWrapping with(this) putIntoMyCart(cart)
+        GiftWrapping with(self) putIntoMyCart(cart)
     )
 
 )

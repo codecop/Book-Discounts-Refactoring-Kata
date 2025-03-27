@@ -8,7 +8,7 @@ doRelativeFile("./AbstractItem.io")
 AbstractItemOnOffer := AbstractItem clone do(
 
     prepareDeliveryIn := method(cart,
-        super(prepareDeliveryIn, cart)
+        super(prepareDeliveryIn(cart))
         handleGiftOptions(cart)
     )
 
@@ -18,7 +18,7 @@ AbstractItemOnOffer := AbstractItem clone do(
             reduceCost = 2
         )
 
-        super(calculateDeliveryCost, cart, grams / reduceCost)
+        super(calculateDeliveryCost(cart, grams / reduceCost))
 
         buyTwoOnlyPayDeliveryForOne(cart)
     )

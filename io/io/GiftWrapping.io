@@ -5,7 +5,7 @@ doRelativeFile("./AbstractItem.io")
 GiftWrapping := AbstractItem clone do(
 
     with := method(item,
-        super(with, "Gift wrapping for " .. item getName)
+        super(with("Gift wrapping for " .. item getName))
     )
 
     putIntoMyCart := method(cart,
